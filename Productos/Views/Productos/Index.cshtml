@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Productos.Models.Producto>
+
+@{
+    ViewData["Title"] = "Lista de Productos";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3 text-center">📦 Lista de Productos</h2>
+
+    <div class="mb-3 text-end">
+        <a asp-action="Create" class="btn btn-success">➕ Nuevo Producto</a>
+    </div>
+
+    <table class="table table-bordered table-striped table-hover shadow-sm">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.IdProducto</td>
+                        <td>@item.Nombre</td>
+                        <td>@item.Categoria</td>
+                        <td>$ @item.Precios</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.IdProducto" class="btn btn-warning btn-sm">✏️ Editar</a>
+                            <a asp-action="Details" asp-route-id="@item.IdProducto" class="btn btn-info btn-sm">👁️ Ver</a>
+                            <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-danger btn-sm">🗑️ Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No hay productos registrados.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
