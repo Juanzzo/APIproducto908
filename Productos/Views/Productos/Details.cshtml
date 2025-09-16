@@ -1,0 +1,17 @@
+﻿@model Productos.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalle del Producto";
+}
+
+<h1>Detalle del Producto</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Nombre</h5>
+        <p><strong>Categoría:</strong> @Model.Categoria</p>
+        <p><strong>Precio:</strong> @Model.Precios</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Volver</a>
